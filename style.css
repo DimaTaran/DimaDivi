@@ -1,0 +1,88 @@
+/*
+ Theme Name:   DimaDivi
+ Description:  Divi Child Theme
+ Author:       Dima Taran
+ Template:     Divi
+ Version:      1.0
+ Text Domain:  dima-divi
+*/
+
+@import url("../Divi/style.css");
+
+.et_search_outer .aws-container {width: 90%; margin-top: 106px !important;}
+
+@media screen and (max-width:1267px) {
+    .et_search_outer .aws-container {margin-top: 125px !important;}
+}
+
+@media screen and (max-width:1213px) {
+    .et_search_outer .aws-container {margin-top: 158px !important;}
+}
+
+.search-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 980px){
+    .search-mobile {
+        display: block;
+        margin: 1% auto;
+        margin-top: 5%
+    }
+    .search-mobile form.aws-search-form {
+        max-width: 95%;
+    }
+    .search-mobile .aws-container .aws-search-form .aws-search-clear {
+        right: -80px;
+    }
+
+    /*Cart for mobile*/
+    body #page-container #top-header {
+        position: fixed;
+    }
+    body #page-container #top-header .container.clearfix {
+        display: flex;
+        flex-wrap: nowrap;
+        /*align-content: space-between;*/
+        align-items: center;
+        justify-content: center;
+    }
+    body #page-container #top-header .container.clearfix #et-secondary-menu {
+        margin-top: 0;
+        display: flex !important;
+        align-items: center;
+
+    }
+    body #page-container #top-header .container.clearfix #et-secondary-menu .et-cart-info {
+        display: flex;
+        align-self: center;
+        align-items: center;
+    }
+    body #page-container #top-header .container.clearfix #et-info {
+        margin-right: 10%;
+    }
+
+}
+@media screen and (max-width: 600px){
+    .search-mobile form.aws-search-form {
+        max-width: 90%;
+    }
+
+}
+
+/*For input mark in cart*/
+input::-webkit-inner-spin-button {  -webkit-appearance: button;    display: block;    width: 10px;    opacity: 1;  background-color: white; color:grey;}
+
+/* For Cart free shipping display*/
+.free-shipping-notice {
+    text-align: center;
+    color:#000;
+}
+.success-ship {
+    color: #cd5c5c;
+}
+
+/* Increase Price Font Size */
+.woocommerce li.product a.woocommerce-LoopProduct-link span.price {
+    font-size: 1.1rem;
+}

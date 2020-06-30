@@ -1,0 +1,18 @@
+{
+    "name": "dima/dima-divi",
+    "authors": [
+        {
+            "name": "Dima Taran",
+            "email": "taran_da@ukr.net"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Classes\\": "Classes",
+            "DiviClasses\\": "DiviClasses"
+
+        }
+
+    }
+}

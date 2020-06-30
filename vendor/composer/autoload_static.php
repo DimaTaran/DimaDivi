@@ -10,6 +10,7 @@ class ComposerStaticInit6596b2283f23196b248c6ed1b4962cd8
         'D' => 
         array (
             'DiviClasses\\' => 12,
+            'DimaDivi\\Classes\\' => 17,
         ),
         'C' => 
         array (
@@ -21,6 +22,10 @@ class ComposerStaticInit6596b2283f23196b248c6ed1b4962cd8
         'DiviClasses\\' => 
         array (
             0 => __DIR__ . '/../..' . '/DiviClasses',
+        ),
+        'DimaDivi\\Classes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Classes',
         ),
         'Classes\\' => 
         array (

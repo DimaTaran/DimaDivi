@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'DiviClasses\\' => array($baseDir . '/DiviClasses'),
+    'DimaDivi\\Classes\\' => array($baseDir . '/Classes'),
     'Classes\\' => array($baseDir . '/Classes'),
 );

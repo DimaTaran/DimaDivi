@@ -10,7 +10,8 @@
     "autoload": {
         "psr-4": {
             "Classes\\": "Classes",
-            "DiviClasses\\": "DiviClasses"
+            "DiviClasses\\": "DiviClasses",
+            "DimaDivi\\Classes\\": "Classes"
 
         }
 

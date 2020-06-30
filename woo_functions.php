@@ -13,6 +13,7 @@ use Classes\GeneralClasses;
 use Classes\LoopExtensions;
 use Classes\CustomEnqueueStyles;
 use Classes\CustomTaxonomy;
+use DimaDivi\Classes\Telegram;
 
 $global_tax_list = ['weight' => 'Масса',];
 define('TAXONOMY_LIST', $global_tax_list);
@@ -23,12 +24,16 @@ require_once('cart_func/free_ship_display.php');
 $CustomEnqueueStyles = new CustomEnqueueStyles();
 $ProductObject = new CustomTaxonomy();
 $LoopProductObject = new LoopExtensions();
-
+$telegram =  new Telegram();
 
 add_action( 'wp_enqueue_scripts', array($CustomEnqueueStyles, 'custom_manage_woo_styles'), 99 );
 add_action( 'et_header_top', array($CustomEnqueueStyles, 'add_mobile_search'), 20 );
 add_action('woocommerce_after_shop_loop_item_title', array($LoopProductObject, 'attr_to_loop'), 12 );
 
+
+
+// send messages on Telegram and other messangers
+add_action( 'woocommerce_thankyou',  array( $telegram, 'sendMessages' ) );
 
 //  free_shipping_amount_shortcode do
 $free_shop_amount = new WC_Shipping_Free_Shipping(1);

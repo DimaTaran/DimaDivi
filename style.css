@@ -11,6 +11,11 @@
 
 .et_search_outer .aws-container {width: 90%; margin-top: 106px !important;}
 
+/*For Archive page*/
+header.woocommerce-products-header {
+margin-bottom: 2rem;
+}
+
 @media screen and (max-width:1267px) {
     .et_search_outer .aws-container {margin-top: 125px !important;}
 }

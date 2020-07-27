@@ -69,7 +69,7 @@ class CustomTaxonomy
                         )
                     );
                 }
-        add_attribute();
+//        add_attribute();
         $result = wp_set_post_terms($post->ID, $term_for_add, $glob_key);
         $result = wp_set_object_terms( $post->ID, $term_arr['term_id'], $glob_key );
 

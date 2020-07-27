@@ -14,17 +14,25 @@ use Classes\LoopExtensions;
 use Classes\CustomEnqueueStyles;
 use Classes\CustomTaxonomy;
 use DimaDivi\Classes\Telegram;
+use DimaDivi\Classes\ProductExtensions;
 
 $global_tax_list = ['weight' => 'Масса',];
 define('TAXONOMY_LIST', $global_tax_list);
 
 require_once('cart_func/free_ship_display.php');
+// includes CONSTANS
+require_once "Constans/constans.php";
 
 
 $CustomEnqueueStyles = new CustomEnqueueStyles();
 $ProductObject = new CustomTaxonomy();
 $LoopProductObject = new LoopExtensions();
 $telegram =  new Telegram();
+
+//NEW TAB
+$ProductExtensions = new ProductExtensions();
+$ProductExtensions->init();
+
 
 add_action( 'wp_enqueue_scripts', array($CustomEnqueueStyles, 'custom_manage_woo_styles'), 99 );
 add_action( 'et_header_top', array($CustomEnqueueStyles, 'add_mobile_search'), 20 );
@@ -38,6 +46,8 @@ add_action( 'woocommerce_thankyou',  array( $telegram, 'sendMessages' ) );
 //  free_shipping_amount_shortcode do
 $free_shop_amount = new WC_Shipping_Free_Shipping(1);
 $GeneralClasses = new GeneralClasses($free_shop_amount);
+$GeneralClasses->init();
+
 
 
 

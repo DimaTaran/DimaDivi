@@ -8,6 +8,11 @@ namespace Classes;
  */
 class LoopExtensions
 {
+    public function __construct()
+    {
+        add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 11 );
+    }
+
     //attrib for display
     public $attributes = ['sort' => 'Вид', 'brand' => 'Бренд', 'cocao-value' => 'Содержание какао'];
 
@@ -34,7 +39,12 @@ class LoopExtensions
            </tr>
            <?php
             }
-        }  ?>
+        } if ( $product->has_weight() ) { ?>
+            <tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--weight">
+                <th class="woocommerce-product-attributes-item__label"><?php _e('Weight', 'woocommerce') ?>:</th>
+                <td class="woocommerce-product-attributes-item__value"><?php echo $product->get_weight() .  get_option('woocommerce_weight_unit') ; ?></td>
+            </tr>
+           <?php } ?>
         </table>
         <?php
     }

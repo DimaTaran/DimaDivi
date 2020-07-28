@@ -67,9 +67,6 @@ class LoopExtensions
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
             <?php
 

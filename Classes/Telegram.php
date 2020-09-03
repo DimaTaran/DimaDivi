@@ -3,14 +3,19 @@
 
 namespace DimaDivi\Classes;
 
-
+/**
+ * Class Telegram
+ * @package DimaDivi\Classes
+ */
 class Telegram
 {
     private $token;
     private $userID;
     public $send_mode;
-//    private $telegram_options = ['divi_telegram_api_key', 'divi_telegram_chat_id' , 'divi_send_on_telegram'];
 
+    /**
+     * Telegram constructor.
+     */
     public function __construct()
     {
         $this->token =  get_option('divi_telegram_api_key');
@@ -18,11 +23,15 @@ class Telegram
         $this->send_mode =  get_option('divi_send_on_telegram');
     }
 
+    /**
+     * @param $order_id
+     */
     public function sendMessages( $order_id )
     {
-        if ( $this->isSent() ) {
+        if ( $this->isSent() && ! $this->getOrderStatus( $order_id ) ) {
             $this->toTelegram( $order_id );
         }
+        $this->setOrderStatus( $order_id );
 
     }
 
@@ -38,6 +47,10 @@ class Telegram
         return $order;
     }
 
+    /**
+     * @param $order_id
+     * @return string
+     */
     private function getUser( $order_id )
     {
         $order = $this->getOrder( $order_id );
@@ -52,6 +65,10 @@ class Telegram
         return  $user_info;
     }
 
+    /**
+     * @param $order_id
+     * @return string
+     */
     private function getProduct( $order_id )
     {
         $order = $this->getOrder( $order_id );
@@ -69,19 +86,33 @@ class Telegram
         return $text_product;
     }
 
+    /**
+     * @return mixed|void
+     */
     private function getToken()
     {
         return $this->token;
     }
+
+    /**
+     * @return mixed|void
+     */
     private function getUserID()
     {
         return $this->userID;
     }
 
+    /**
+     * @return mixed|void
+     */
     private function getSentMode()
     {
         return $this->send_mode;
     }
+
+    /**
+     * @return bool
+     */
     private function isSent()
     {
         if ( $this->getSentMode() == 'on') {
@@ -90,6 +121,30 @@ class Telegram
 
     }
 
+    /**
+     * @param $order_id
+     * @return mixed
+     */
+    public function getOrderStatus( $order_id )
+    {
+        return get_post_meta( $order_id, 'telegram_sent', $single = true );
+    }
+
+    /**
+     * @param $order_id
+     * @return bool|int
+     */
+    private function setOrderStatus($order_id)
+    {
+        if ( ! $this->getOrderStatus( $order_id ) ) {
+            return update_post_meta( $order_id, 'telegram_sent', '1' );
+        }
+
+    }
+
+    /**
+     * @param $order_id
+     */
     private function toTelegram( $order_id )
     {
         $txt = urlencode($this->getUser( $order_id ) . PHP_EOL . $this->getProduct( $order_id ) );

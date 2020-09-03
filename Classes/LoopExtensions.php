@@ -12,18 +12,26 @@ class LoopExtensions
     {
         // Add buttom  add to cart action
         add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 11 );
-        add_action('woocommerce_after_shop_loop', array($this, 'archiveTextFooter'), 12 );
+       // Text for 100% cocoa archive page
+        add_action( 'woocommerce_after_shop_loop', array( $this, 'archiveTextFooter' ), 12 );
     }
 
     //attrib for display
-    public $attributes = ['sort' => 'Вид', 'brand' => 'Бренд', 'cocao-value' => 'Содержание какао'];
+   private $attributes = ['sort' => 'Вид', 'brand' => 'Бренд', 'cocao-value' => 'Содержание какао'];
+
+    // Generator for attr
+    private function getAttr()
+    {
+        yield from $this->attributes;
+    }
+
 
     public function get_term_string($product, $name_term, $taxonomy_name) {
         $var_name = 'term_' . $name_term;
         $$var_name = wp_get_post_terms( $product->get_id(), $taxonomy_name, array() );
         $name_term = [];
         foreach ( $$var_name as $term) {
-            $name_term[]= $term->name ;
+            $name_term[] = $term->name ;
         }
         return implode(', ', $name_term);
     }
@@ -33,7 +41,8 @@ class LoopExtensions
         global $product;
         ?>
         <table class="woocommerce-product-attributes shop_attributes">
-        <?php  foreach ($this->attributes as $attribute => $tex_label) {
+
+        <?php  foreach ($this->getAttr() as $attribute => $tex_label) { // Use generator
             if (  $$attribute = $this->get_term_string( $product, $attribute, 'pa_'.$attribute ) ) { ?>
            <tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_grape-varieties">
                 <th class="woocommerce-product-attributes-item__label"><?php echo $tex_label; ?>:</th>

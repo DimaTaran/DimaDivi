@@ -7,6 +7,12 @@ class CustomEnqueueStyles
 
     public function custom_manage_woo_styles() {
 
+
+        if ( ! is_page('contact')) {
+            wp_dequeue_style( 'contact-form-7' );
+            wp_dequeue_script( 'contact-form-7' );
+        }
+
         if ( function_exists( 'is_woocommerce' ) ) {
 
             if ( ! is_front_page() && ! is_page() && ! is_woocommerce() && ! is_cart() && ! is_checkout() && ! is_account_page() || is_page('brands')) {

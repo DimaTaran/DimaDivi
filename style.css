@@ -9,7 +9,7 @@
 
 @import url("../Divi/style.css");
 
-.et_search_outer .aws-container {width: 90%; margin-top: 106px !important;}
+.et_search_outer .aws-container {width: 90%; margin-top: 86px !important;}
 
 /*For Archive page*/
 header.woocommerce-products-header {
@@ -17,11 +17,11 @@ margin-bottom: 2rem;
 }
 
 @media screen and (max-width:1267px) {
-    .et_search_outer .aws-container {margin-top: 125px !important;}
+    .et_search_outer .aws-container {margin-top: 105px !important;}
 }
 
 @media screen and (max-width:1213px) {
-    .et_search_outer .aws-container {margin-top: 158px !important;}
+    .et_search_outer .aws-container {margin-top: 138px !important;}
 }
 
 .search-mobile {
@@ -44,7 +44,7 @@ margin-bottom: 2rem;
         margin-top: 5%
     }
     .search-mobile form.aws-search-form {
-        max-width: 95%;
+        max-width: 100%;
     }
     .search-mobile .aws-container .aws-search-form .aws-search-clear {
         right: -80px;
@@ -79,7 +79,7 @@ margin-bottom: 2rem;
 }
 @media screen and (max-width: 600px){
     .search-mobile form.aws-search-form {
-        max-width: 90%;
+        max-width: 100%;
     }
 
 }
@@ -99,4 +99,7 @@ input::-webkit-inner-spin-button {  -webkit-appearance: button;    display: bloc
 /* Increase Price Font Size */
 .woocommerce li.product a.woocommerce-LoopProduct-link span.price {
     font-size: 1.1rem;
+}
+.woocommerce ul.products li.first, .woocommerce-page ul.products li.first {
+    clear: none;
 }

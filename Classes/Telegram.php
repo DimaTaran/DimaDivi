@@ -76,13 +76,18 @@ class Telegram
         $order_items  = $order->get_items();
         $text_product = '';
         $i = 0;
+        $total_price = 0;
 
         foreach ( $order_items as $item_id => $item ) {
             $product = $item->get_product();
-            $text_product .= ++$i . '. ' . $product->get_name() . ' ' . $item->get_quantity() . ' шт' . PHP_EOL;
+            $sku = $product->get_sku() ?  $product->get_sku() : '#0000000';
+            $total_price +=$product->get_price() * $item->get_quantity();
+            $text_product .= ++$i . '. ' . $product->get_name() .  ' (' . $sku . ') ' . $product->get_price() .  'грн x '  . $item->get_quantity() . ' шт = ' . $product->get_price() * $item->get_quantity() .  'грн ' . PHP_EOL;
         }
+        $text_product .= 'Итого: ' . $total_price . 'грн  ' . PHP_EOL;
         unset($order);
         unset($i);
+        unset($total_price);
         return $text_product;
     }
 

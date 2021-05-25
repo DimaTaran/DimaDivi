@@ -74,7 +74,7 @@ class Telegram
         $order = $this->getOrder( $order_id );
 
         $order_items  = $order->get_items();
-        $text_product = __('Заказ #', 'wine-divi') .  $order_id . PHP_EOL;
+        $text_product = __('Заказ #', 'dima-divi') .  $order_id . PHP_EOL;
         $i = 0;
         $total_price = 0;
 
